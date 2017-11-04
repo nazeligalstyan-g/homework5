@@ -1,0 +1,99 @@
+Rules:
+-Do not use var or let, only const
+-Use recursion to do all cycles
+-Do not collaborate with others - do your own work!
+
+Some help:
+
+// returns a random number between 1 and the given number inclusively
+// Example: rand(5) will return 1, 2, 3, 4, or 5 randomly
+const rand = function(num) {
+return Math.floor(Math.random() * num) + 1;
+};
+
+#1 (10 points)
+
+const createPoints = function(count, canvasWidth, canvasHeight) {
+
+// TODO: Implement this function which takes as arguments a count, canvasWidth and canvasHeight and returns an array of points with different
+ x and y locations (this is where you use the rand method I provided above). All generated boxes need to be inside the canvas 
+(which is why canvasWidth and canvasHeight are given as arguments).
+
+// Each point should look something like this:
+
+// {
+// x: ...your random value inside the canvas...,
+// x: ...your random value inside the canvas...,
+// width: 30,
+// height: 30,
+// xDelta: 1,
+// yDelta: 1,
+// color: colorArray[rand(3)-1] // where colorArray could be something like ['red', 'green', 'orange']
+// }
+
+// Note: The entire rectangle needs to fit in the canvas, not just the x and y (account for width and height).
+
+};
+
+#2 (20 points) 
+
+Write a program that has a bunch of boxes, with different colors, bouncing around all over the screen. 
+Use the method implemented in part 1 to get an array of points. Your program should include a render function (which draws the data on the screen), 
+an updateData function (which updates the data of the game) and a loop method (which handles the animation loop recursively by using 
+the requestAnimationFrame method). The render method should iterate over the list of points and draw them on the screen. 
+The updateData method should, for each point, move the x and y by a local delta. However, if the point hits a wall, it should start moving in the other direction. 
+
+Feel free to experiment - have fun with this. For example, try changing the color of each point in the updateData method and watch the points change color as they bounce around.
+
+#3 (30 points)
+
+Some help:
+
+const leftKey = 37;
+const upKey = 38;
+const rightKey = 39;
+const downKey = 40;
+
+document.addEventListener('keydown', function(event) {
+if(event.keyCode === upKey) {
+console.log('up key was pressed');
+}
+}, false);
+Your data should look like this:
+
+const gameData = {
+hero: {
+x: ...,
+y: ...,
+width: ...
+},
+badGuys: [
+{
+x: ...,
+y: ...,
+width: ...,
+height: ...,
+xDelta: 1,
+yDelta: 1
+},
+... etc ...
+]
+}
+Much like part 2, draw a bunch of bad guys (the number of bad guys should change based on a single variable). 
+So write a method similar to part 1 to generate a list of bad guys. Much like part 2, the bad guys should be 
+moving around the canvas. You could imagine adding more and more bad guys over time, as the player of your game 
+moves to the next level. The speed of the bad guys could also increase in the next level.
+
+Draw one hero on the canvas. We should be able to control the hero by pressing up, 
+down, left and right keys on the keyboard. If the hero at any time touches one of the bad guys, 
+he dies (stop everything and alert('game over');). So the goal is to have your hero run away from the bad 
+guys that are chasing him or her.
+
+#4 (40 points)
+Make a screencast in which you describe the game you implemented in #3. You should describe the logic 
+of your code. Explain how it works. Make it clear that you understand the code you wrote. 
+If it's unclear, we will take off points. Add your video to your channel.
+
+Upload all your code to GitHub and submit a link to your repository along with a link to your youtube video.
+
+Good luck!
